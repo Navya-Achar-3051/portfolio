@@ -68,9 +68,9 @@
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative hidden lg:flex justify-center"
+            className="relative flex justify-center mt-12 lg:mt-0"
           >
-            <div className="relative w-[400px] h-[480px]">
+            <div className="relative w-[280px] h-[340px] sm:w-[350px] sm:h-[420px] lg:w-[400px] lg:h-[480px]">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
               <div className="absolute inset-4 rounded-[2rem] border border-white/10 glass-panel rotate-3" />
               <div className="absolute inset-4 rounded-[2rem] overflow-hidden -rotate-3 border border-primary/30">
