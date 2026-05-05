@@ -1,10 +1,26 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thanks for your message! This is a demo form.");
+    const form = e.target as HTMLFormElement;
+    
+    const formData = new FormData(form);
+    
+    fetch("https://formsubmit.co/navyaacchar.rs@gmail.com", {
+      method: "POST",
+      body: formData,
+    }).then(() => {
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => setSubmitted(false), 3000);
+    }).catch(() => {
+      alert("Failed to send message. Please try again.");
+    });
   };
 
   return (
@@ -87,6 +103,12 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               
+              {submitted && (
+                <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-center">
+                  ✓ Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
               <div className="grid md:grid-cols-2 gap-6">
                 
                 <div className="space-y-2">
@@ -95,6 +117,7 @@ export default function Contact() {
                   </label>
                   <input 
                     type="text"
+                    name="name"
                     placeholder="Enter your name"
                     required
                     className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
@@ -107,6 +130,7 @@ export default function Contact() {
                   </label>
                   <input 
                     type="email"
+                    name="email"
                     placeholder="Enter your email"
                     required
                     className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
@@ -121,6 +145,7 @@ export default function Contact() {
                 </label>
                 <input 
                   type="text"
+                  name="subject"
                   placeholder="Enter subject"
                   required
                   className="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
@@ -132,6 +157,7 @@ export default function Contact() {
                   Message
                 </label>
                 <textarea 
+                  name="message"
                   rows={5}
                   placeholder="Write your message..."
                   required
