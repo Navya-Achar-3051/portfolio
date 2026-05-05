@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Variables */
+:root {
+  --background: 220 45% 6%;
+  --foreground: 0 0% 95%;
+
+  --primary: 45 96% 53%;
+  --primary-foreground: 220 45% 6%;
+
+  --secondary: 38 95% 48%;
+  --secondary-foreground: 220 45% 6%;
+
+  --accent: 52 100% 60%;
+  --accent-foreground: 220 45% 6%;
+
+  --muted: 220 35% 12%;
+  --muted-foreground: 220 15% 60%;
+
+  --card: 220 40% 9%;
+  --card-foreground: 0 0% 95%;
+
+  --border: 220 30% 16%;
+  --ring: 45 96% 53%;
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+    @apply tracking-tight font-bold;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-300;
+  }
+
+  .glass-panel {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  }
+}
