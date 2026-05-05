@@ -16,16 +16,14 @@ export function useScrollSpy(sectionIds: string[], offset: number = 100) {
         return false;
       });
 
-      if (current && current !== activeSection) {
-        setActiveSection(current);
-      }
+      setActiveSection(current || "");
     };
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionIds, offset, activeSection]);
+  }, [sectionIds, offset]);
 
   return activeSection;
 }
