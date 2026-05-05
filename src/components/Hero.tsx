@@ -55,7 +55,8 @@
                 Get In Touch <ArrowRight size={18} />
               </button>
               <a 
-                href={`${import.meta.env.BASE_URL}resume.pdf`} 
+                href="/portfolio/resume.pdf" 
+                download
                 className="px-8 py-4 rounded-xl font-semibold glass-panel hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
               >
                 Download Resume <Download size={18} />
